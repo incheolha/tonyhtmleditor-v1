@@ -14,10 +14,9 @@ export const GlobalConfig = {
     placeholder: 'Enter text here...',
     imageEndPoint: '',
     toolbar: [
-        ['bold', 'underline'],
+        ['bold', 'italic','underline'],
         ['fontName', 'fontSize', 'color'],
         ['justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull', 'indent'],
-        ['cut', 'copy', 'delete', 'removeFormat', 'undo', 'redo'],
-        ['paragraph', 'blockquote', 'removeBlockquote', 'horizontalLine']
+        ['cut', 'copy', 'paste']
     ]
 };

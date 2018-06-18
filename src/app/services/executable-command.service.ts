@@ -8,5 +8,23 @@ export class ExecutableCommandService {
 
     savedSelection: any = undefined;
 
+    execute(command: string): void {
+        if (!this.savedSelection && command !== 'enableObjectResizing') {
+            throw new Error('Range OUt of Editor');
+        }
+        if (command === 'enableObjectResizing') {
+            document.execCommand('enableObjectResizing', true, true);
+        }
+        if (command === 'blockquote') {
+            document.execCommand('formatBlock', false, 'blockquote');
+            return;
+        }
+        if (command === 'removeBlockquote') {
+            document.execCommand('formatBlock', false, 'div');
+            return;
+        }
+        document.execCommand(command, false, null);
+        return;
+    }
 
 }

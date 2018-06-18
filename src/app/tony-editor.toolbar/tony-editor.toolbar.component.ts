@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { ExecutableCommandService } from '../services/executable-command.service';
+import * as Utils from '../Utility/tony-editor.utility';
 
 @Component({
   selector: 'app-tony-editor-toolbar',
@@ -7,9 +9,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ToolbarComponent implements OnInit {
 
-  constructor() { }
+  fontName = '';
+  fontSize = '';
+  hexColor = '';
+
+  @Input() config: any;
+
+  @Output() execute: EventEmitter<string> = new EventEmitter<string>();
+
+  constructor(private executableCommandService: ExecutableCommandService ) { }
 
   ngOnInit() {
   }
 
+  canEnableToolbarOptions(value): boolean {
+    
+    return Utils.canEnableToolbarOptions(value, this.config['toolbar']);
+  }
+
+  triggerCommand(command:  string): void {
+    console.log(command);
+    this.execute.emit(command);
+  }
 }

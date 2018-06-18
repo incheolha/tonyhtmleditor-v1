@@ -23,6 +23,14 @@ import * as Utils from '../Utility/tony-editor.utility';
 export class TonyEditorComponent implements OnInit, ControlValueAccessor {
 
 
+  translate: string;
+  height: string;
+  minHeight: string;
+  width: string;
+  minWidth: string;
+
+  resizer = 'stack';
+
   @Output() blur: EventEmitter<string> = new EventEmitter<string>();
   @Output() focus: EventEmitter<string> = new EventEmitter<string>();
   
@@ -45,6 +53,8 @@ export class TonyEditorComponent implements OnInit, ControlValueAccessor {
     console.log(this.config.editable);
     console.log(this.config.height);
     console.log(this.config.placeholder);
+
+    
   }
 
   writeValue(value: any): void {
@@ -52,6 +62,7 @@ export class TonyEditorComponent implements OnInit, ControlValueAccessor {
     if(value === null || value === undefined || value === '' || value === '<br>'){
       value = null;
     }
+    this.refreshView(value);
  }
 
  registerOnChange(fn: any): void {
@@ -75,6 +86,12 @@ export class TonyEditorComponent implements OnInit, ControlValueAccessor {
     this.executableCommandService.savedSelection = Utils.saveSelection();
   }
 
+  resixeTextArea(offsetY: number): void {
+    let newHeight = parseInt(this.height, 10);
+    newHeight += offsetY;
+    this.height = newHeight + 'px';
+    this.textArea.nativeElement.style.height = this.height;
+  }
 
   onContentChange(html: string): void {
 
@@ -82,4 +99,21 @@ export class TonyEditorComponent implements OnInit, ControlValueAccessor {
 
   }
 
-}
+  executeCommand(commandName: string): void {
+    try {
+      console.log(commandName);
+      this.executableCommandService.execute(commandName);
+    } catch(error) {
+      console.log(error);
+    }
+    return;
+  }
+
+  refreshView(value: string): void{
+    const normalizedValue = value === null ? '' : value;
+    this.readerer.setProperty(this.textArea.nativeElement, 'innerHTML', normalizedValue);
+    return;
+  }
+
+
+ }

@@ -1,4 +1,4 @@
-<app-tony-editor-toolbar></app-tony-editor-toolbar>
+<app-tony-editor-toolbar [config]="config" (execute)="executeCommand($event)"></app-tony-editor-toolbar>
 <div class="tony-editor"
      id="tonyEditor"
      [style.width]="config['width']"
@@ -17,11 +17,10 @@
          [style.minHeight]="config['minHeight']"
          (focus)="onTextAreaFocus()"
          (blur)="onTextAreaBlur()"
-         #tonyTextArea></div>
+         #tonyTextArea>
+    </div>
 
-         <div > </div>
-  
-  </div>dd
+  </div>
 
 
 </div>
