@@ -27,10 +27,11 @@ export class ExecutableCommandService {
             document.execCommand('formatBlock', false, 'div');
             return;
         }
-        if (value !=='') {
+        if (value !== undefined) {
             console.log(value);
             document.execCommand(command, false, value);    
         } else {
+            console.log('this is check point');
             document.execCommand(command, false, null);
         }
             

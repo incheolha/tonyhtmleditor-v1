@@ -1,7 +1,7 @@
-<div class="row">
-  <div class="col-md-12">
+<div class="row m-0">
+  <div class="mx-auto">
     <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-      <div class="btn-group mr-2" role="group" aria-label="First group">
+      <div class="btn-group" role="group" aria-label="First group">
           <button type="button" 
                   class="btn-floating light-blue accent-4 btn-sm"
                   (click)="triggerCommand('bold')">
@@ -28,33 +28,33 @@
                                 <div class="dropdown-menu">
 
                                     <button class="dropdown-item" type="button"
-                                            (click)="onSquareInsert()"
+                                            (click)="onSymbolInsert(0)"
                                     >
                                                 ■ Symbol Insert
                                     </button> 
                                     <button class="dropdown-item" type="button"
-                                            (click)="onArrowInsert()"
+                                            (click)="onSymbolInsert(1)"
                                     >
                                                 ► Symbol Insert
                                     </button>   
  
                                     <button class="dropdown-item" type="button"
-                                            (click)="onOneInsert()"
+                                            (click)="onSymbolInsert(2)"
                                     >
                                                 ① Symbol Insert
                                     </button>   
                                     <button class="dropdown-item" type="button"
-                                            (click)="onTwoInsert()"
+                                            (click)="onSymbolInsert(3)"
                                     >
                                                 ② Symbol Insert
                                     </button>            
                                     <button class="dropdown-item" type="button"
-                                            (click)="onThreeInsert()"
+                                            (click)="onSymbolInsert(4)"
                                     >
                                                 ③ Symbol Insert
                                      </button>            
                                      <button class="dropdown-item" type="button"
-                                             (click)="onFourInsert()"
+                                             (click)="onSymbolInsert(5)"
                                      >
                                                 ④ Symbol Insert
                                      </button>            
@@ -62,7 +62,8 @@
                                 </div>
                             </div>
 
-        <button type="button" class="btn-floating light-blue accent-3 btn-sm">
+        <button type="button" class="btn-floating light-blue accent-3 btn-sm"
+                (click)="onBackColorChange()">
                 <i class="fa fa-tint indigo-text" aria-hidden="true"></i></button>
     </div>
 
@@ -79,7 +80,8 @@
           <button type="button" class="btn-floating green accent-1 btn-sm"
                         (click)="triggerCommand('justifyRight')">
                   <i class="fa fa-align-right indigo-text" aria-hidden="true"></i></button>
-
+       </div>
+      <div class="btn-group mr-2" role="group" aria-label="Fourth group">
           <button type="button" class="btn-floating indigo lighten-2 btn-sm"
                   (click)="triggerCommand('indent')">
                   <i class="fa fa-indent indigo-text" aria-hidden="true"></i></button>
@@ -88,23 +90,29 @@
                   (click)="triggerCommand('outdent')">
                   <i class="fa fa-dedent indigo-text" aria-hidden="true"></i></button>
 
-        </div>
-
-      <div class="btn-group mr-2" role="group" aria-label="Fourth group">
+      </div>
+   
+      <div class="btn-group mr-2" role="group" aria-label="Fifth group">
           <button type="button" class="btn-floating amber accent-4 btn-sm"
                   (click)="triggerCommand('copy')">
                   <i class="fa fa-copy indigo-text" aria-hidden="true"></i></button>
           <button type="button" class="btn-floating amber accent-3 btn-sm"
                   (click)="triggerCommand('cut')">
                   <i class="fa fa-cut indigo-text" aria-hidden="true"></i></button>
-          <button type="button" class="btn-floating amber accent-2 btn-sm"
-                  (click)="triggerCommand('paste')">
-                  <i class="fa fa-paste indigo-text" aria-hidden="true"></i></button>
           <button type="button" class="btn-floating amber accent-4 btn-sm"
                   (click)="triggerCommand('delete')">
-                  <i class="fa fa-eraser indigo-text" aria-hidden="true"></i></button>
-                  
+                  <i class="fa fa-eraser indigo-text" aria-hidden="true"></i></button>                  
       </div>
+
+      <div class="btn-group mr-2" role="group" aria-label="Sixth group">
+        <button type="button" class="btn-floating amber accent-4 btn-sm"
+                (click)="triggerCommand('undo')">
+                <i class="fa fa-undo indigo-text" aria-hidden="true"></i></button>
+        <button type="button" class="btn-floating amber accent-3 btn-sm"
+                (click)="triggerCommand('redo')">
+                <i class="fa fa-repeat indigo-text" aria-hidden="true"></i></button>             
+    </div>
+
     </div>
     
   </div>

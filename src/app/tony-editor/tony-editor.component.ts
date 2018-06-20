@@ -4,6 +4,7 @@ import { Component, OnInit, Input, Output,
 
 import { NG_VALUE_ACCESSOR, ControlValueAccessor, FormGroup, FormControl, Validators } from '@angular/forms';
 import { GlobalConfig } from '../GlobalSetting/tony-editor.global.default';
+import { Symbol } from '../GlobalSetting/tony-editor.global.default';
 import { CommandModel } from '../GlobalSetting/command.model';
 
 import { Subject } from 'rxjs/Subject';
@@ -105,7 +106,7 @@ export class TonyEditorComponent implements OnInit, ControlValueAccessor {
 
     console.log(html);
     
-    this.executableCommandService.htmlContent.next(html);
+    this.executableCommandService.htmlContent.next(html);   //실시간으로 textArea에서 입력한 값을 Obserable함
 
   }
 

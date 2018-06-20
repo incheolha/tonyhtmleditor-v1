@@ -4,9 +4,9 @@
 export const GlobalConfig = {
     editable: true,
     spellcheck: true,
-    height: '15rem',
-    minHeight: '7rem',
-    width: '95%',
+    height: '45rem',
+    minHeight: '15rem',
+    width: '100%',
     minWidth: '50%',
     translate: 'yes',
     enableToolbar: true,
@@ -22,5 +22,12 @@ export const GlobalConfig = {
 };
 
 export const Symbol = {
+
+    squareSymbol: '■',
+    triangleSymbol: '►',
+    oneSymbol: '①',
+    twoSymbol: '②',
+    threeSymbol: '③',
+    fourSymbol: '④'
    
 }
