@@ -1,4 +1,24 @@
-<h1>Tony Editor V.1.0.0</h1>
-<div>
-  <app-tony-editor></app-tony-editor>
-</div>
+
+<section class="py-2">
+    <h2 class="h1 text-center mb-5">Reading Section and Probems</h2>
+    <div class="row">
+        <div class="col-md-6 mb-4"> 
+          <div>
+            <h6>HTML Content</h6>
+            <div>
+            <button class="btn btn-primary" (click)="onSubmit()">
+              Save
+            </button>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 mb-4">
+            <h1>Tony Editor V.1.0.0</h1>
+            <div>
+              <app-tony-editor [htmlContent]="htmlContent"></app-tony-editor>
+            </div>
+          </div>
+
+    </div>
+
+</section>

@@ -1,10 +1,11 @@
 import { Component, OnInit, Input, Output,
-         ViewChild, EventEmitter, Renderer2, forwardRef
+         ViewChild, EventEmitter, Renderer2, forwardRef, ElementRef
         } from '@angular/core';
 
-import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
+import { NG_VALUE_ACCESSOR, ControlValueAccessor, FormGroup, FormControl, Validators } from '@angular/forms';
 import { GlobalConfig } from '../GlobalSetting/tony-editor.global.default';
 
+import { Subject } from 'rxjs/Subject';
 import { ExecutableCommandService } from '../services/executable-command.service';
 import * as Utils from '../Utility/tony-editor.utility';
 
@@ -34,7 +35,7 @@ export class TonyEditorComponent implements OnInit, ControlValueAccessor {
   @Output() blur: EventEmitter<string> = new EventEmitter<string>();
   @Output() focus: EventEmitter<string> = new EventEmitter<string>();
   
-  @ViewChild('tonyTextArea') textArea: any;
+  @ViewChild('tonyTextArea') textArea: ElementRef;
   @ViewChild('tonyWrapper') tonyWrapper: any;
   
   Utils: any = Utils;
@@ -53,7 +54,13 @@ export class TonyEditorComponent implements OnInit, ControlValueAccessor {
     console.log(this.config.editable);
     console.log(this.config.height);
     console.log(this.config.placeholder);
+    
+   // this.textArea.nativeElement.innerHTML = this.htmlContent;
 
+    // const div = this.readerer.createElement('div');
+    // const text = this.readerer.createText(this.htmlContent);
+    // this.readerer.appendChild(div, text);
+    // this.readerer.appendChild(this.textArea.nativeElement, div);
     
   }
 
@@ -77,7 +84,7 @@ export class TonyEditorComponent implements OnInit, ControlValueAccessor {
     return;
   }
   onEditorFocus() {
-    this.textArea.navtiveElement.focus();
+    this.textArea.nativeElement.focus();
     console.log(this.textArea.nativeElement.focus());
   }
 
@@ -96,6 +103,8 @@ export class TonyEditorComponent implements OnInit, ControlValueAccessor {
   onContentChange(html: string): void {
 
     console.log(html);
+    
+    this.executableCommandService.htmlContent.next(html);
 
   }
 
@@ -114,6 +123,5 @@ export class TonyEditorComponent implements OnInit, ControlValueAccessor {
     this.readerer.setProperty(this.textArea.nativeElement, 'innerHTML', normalizedValue);
     return;
   }
-
 
  }
