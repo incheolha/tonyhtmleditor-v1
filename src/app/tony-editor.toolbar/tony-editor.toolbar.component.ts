@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ExecutableCommandService } from '../services/executable-command.service';
+import { CommandModel } from '../GlobalSetting/command.model';
 import * as Utils from '../Utility/tony-editor.utility';
 
 @Component({
@@ -9,13 +10,11 @@ import * as Utils from '../Utility/tony-editor.utility';
 })
 export class ToolbarComponent implements OnInit {
 
-  fontName = '';
-  fontSize = '';
-  hexColor = '';
+  command: CommandModel;
 
   @Input() config: any;
 
-  @Output() execute: EventEmitter<string> = new EventEmitter<string>();
+  @Output() execute: EventEmitter<CommandModel> = new EventEmitter<CommandModel>();
 
   constructor(private executableCommandService: ExecutableCommandService ) { }
 
@@ -27,8 +26,13 @@ export class ToolbarComponent implements OnInit {
     return Utils.canEnableToolbarOptions(value, this.config['toolbar']);
   }
 
-  triggerCommand(command:  string): void {
-    console.log(command);
-    this.execute.emit(command);
+  onSquareInsert() {
+    console.log(' ■ Symbol Insert');
+    this.triggerCommand('insertText', '■')
+  }
+  triggerCommand(command:  string, value): void {
+    this.command = new CommandModel(command, value);
+    console.log(this.command);
+    this.execute.emit(this.command);
   }
 }

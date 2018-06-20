@@ -4,6 +4,7 @@ import { Component, OnInit, Input, Output,
 
 import { NG_VALUE_ACCESSOR, ControlValueAccessor, FormGroup, FormControl, Validators } from '@angular/forms';
 import { GlobalConfig } from '../GlobalSetting/tony-editor.global.default';
+import { CommandModel } from '../GlobalSetting/command.model';
 
 import { Subject } from 'rxjs/Subject';
 import { ExecutableCommandService } from '../services/executable-command.service';
@@ -108,10 +109,11 @@ export class TonyEditorComponent implements OnInit, ControlValueAccessor {
 
   }
 
-  executeCommand(commandName: string): void {
+  executeCommand(command: CommandModel){
     try {
-      console.log(commandName);
-      this.executableCommandService.execute(commandName);
+      console.log(command.commandName);
+      console.log(command.value);
+      this.executableCommandService.execute(command.commandName, command.value);
     } catch(error) {
       console.log(error);
     }

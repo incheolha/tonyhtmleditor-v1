@@ -10,7 +10,9 @@ export class ExecutableCommandService {
 
     savedSelection: any = undefined;
 
-    execute(command: string): void {
+    execute(command: string, value: string): void {
+        console.log(command);
+        console.log(value);
         if (!this.savedSelection && command !== 'enableObjectResizing') {
             throw new Error('Range OUt of Editor');
         }
@@ -25,7 +27,13 @@ export class ExecutableCommandService {
             document.execCommand('formatBlock', false, 'div');
             return;
         }
-        document.execCommand(command, false, null);
+        if (value !=='') {
+            console.log(value);
+            document.execCommand(command, false, value);    
+        } else {
+            document.execCommand(command, false, null);
+        }
+            
         return;
     }
 

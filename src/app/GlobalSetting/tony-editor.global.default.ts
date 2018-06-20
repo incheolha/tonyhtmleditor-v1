@@ -20,3 +20,7 @@ export const GlobalConfig = {
         ['cut', 'copy', 'paste']
     ]
 };
+
+export const Symbol = {
+   
+}

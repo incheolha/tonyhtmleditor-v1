@@ -6,19 +6,67 @@
                   class="btn-floating light-blue accent-4 btn-sm"
                   (click)="triggerCommand('bold')">
                   <i class="fa fa-bold indigo-text" aria-hidden="true"></i></button>
-            
           <button type="button" class="btn-floating light-blue accent-3 btn-sm"
                  (click)="triggerCommand('italic')">
                  <i class="fa fa-italic indigo-text" aria-hidden="true"></i></button>
-          <button type="button" class="btn-floating light-blue accent-2 btn-sm">
-                 <i class="fa fa-font indigo-text" aria-hidden="true"></i></button>
           <button type="button" class="btn-floating light-blue accent-1 btn-sm"
                    (click)="triggerCommand('underline')">
                  <i class="fa fa-underline indigo-text" aria-hidden="true"></i></button>
       </div>
     
-  
       <div class="btn-group mr-2" role="group" aria-label="Second group">
+
+        <div class="dropdown" dropdown>
+                                <button dropdownToggle type="button" 
+                                        class="btn-floating 
+                                        light-blue accent-4 btn-sm 
+                                        dropdown-toggle waves-light" 
+                                        mdbWavesEffect>
+                                        <i class="fa fa-clipboard indigo-text" aria-hidden="true"></i>
+                                </button>
+                            
+                                <div class="dropdown-menu">
+
+                                    <button class="dropdown-item" type="button"
+                                            (click)="onSquareInsert()"
+                                    >
+                                                ■ Symbol Insert
+                                    </button> 
+                                    <button class="dropdown-item" type="button"
+                                            (click)="onArrowInsert()"
+                                    >
+                                                ► Symbol Insert
+                                    </button>   
+ 
+                                    <button class="dropdown-item" type="button"
+                                            (click)="onOneInsert()"
+                                    >
+                                                ① Symbol Insert
+                                    </button>   
+                                    <button class="dropdown-item" type="button"
+                                            (click)="onTwoInsert()"
+                                    >
+                                                ② Symbol Insert
+                                    </button>            
+                                    <button class="dropdown-item" type="button"
+                                            (click)="onThreeInsert()"
+                                    >
+                                                ③ Symbol Insert
+                                     </button>            
+                                     <button class="dropdown-item" type="button"
+                                             (click)="onFourInsert()"
+                                     >
+                                                ④ Symbol Insert
+                                     </button>            
+         
+                                </div>
+                            </div>
+
+        <button type="button" class="btn-floating light-blue accent-3 btn-sm">
+                <i class="fa fa-tint indigo-text" aria-hidden="true"></i></button>
+    </div>
+
+      <div class="btn-group mr-2" role="group" aria-label="Third group">
           <button type="button" class="btn-floating green accent-4 btn-sm"
                   (click)="triggerCommand('justifyCenter')">
                   <i class="fa fa-align-center indigo-text" aria-hidden="true"></i></button>
@@ -26,17 +74,23 @@
                   (click)="triggerCommand('justifyFull')">
                   <i class="fa fa-align-justify indigo-text" aria-hidden="true"></i></button>
           <button type="button" class="btn-floating green accent-2 btn-sm"
-                  (click)="triggerCommand('justifyLeft')">>
+                  (click)="triggerCommand('justifyLeft')">
                   <i class="fa fa-align-left indigo-text" aria-hidden="true"></i></button>
-          <button type="button" class="btn-floating green accent-1 btn-sm">
+          <button type="button" class="btn-floating green accent-1 btn-sm"
+                        (click)="triggerCommand('justifyRight')">
                   <i class="fa fa-align-right indigo-text" aria-hidden="true"></i></button>
 
           <button type="button" class="btn-floating indigo lighten-2 btn-sm"
                   (click)="triggerCommand('indent')">
                   <i class="fa fa-indent indigo-text" aria-hidden="true"></i></button>
+
+          <button type="button" class="btn-floating indigo lighten-2 btn-sm"
+                  (click)="triggerCommand('outdent')">
+                  <i class="fa fa-dedent indigo-text" aria-hidden="true"></i></button>
+
         </div>
 
-      <div class="btn-group mr-2" role="group" aria-label="Third group">
+      <div class="btn-group mr-2" role="group" aria-label="Fourth group">
           <button type="button" class="btn-floating amber accent-4 btn-sm"
                   (click)="triggerCommand('copy')">
                   <i class="fa fa-copy indigo-text" aria-hidden="true"></i></button>
